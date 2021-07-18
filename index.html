@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-12">
+                <table class="table" id="all">
+                    <thead>
+                        <tr>
+                            <th>order</th>
+                            <th>name</th>
+                            <th>age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>4318</td>
+                            <td>beer</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>8071</td>
+                            <td>am</td>
+                            <td>32</td>
+                        </tr>
+                        <tr>
+                            <td>1234</td>
+                            <td>zeb</td>
+                            <td>22</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary btn-sm" id="getall">click</button>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>order</th>
+                            <th>name</th>
+                            <th>age</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>4318</td>
+                            <td>beer</td>
+                            <td>22</td>
+                            <td>
+                                <button type="button" class="getone">click</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8071</td>
+                            <td>am</td>
+                            <td>32</td>
+                            <td>
+                                <button type="button" class="getone">click</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1234</td>
+                            <td>zeb</td>
+                            <td>22</td>
+                            <td>
+                                <button type="button" class="getone">click</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#getall').click(function() {
+                let data = [];
+                $("table#all tbody tr").each(function(tr) {
+                    data[tr] = [];
+                    $(this).children('td').each(function(td) {
+                        data[tr][td] = $(this).text();
+                    });
+                });
+                console.log(data);
+            });
+
+            $(".getone").click(function() {
+                let data = [];
+                $.each($(this).closest("tr").find("td:not(:last-child)"), function(i) {
+                    data[i] = $(this).text();
+                });
+                console.log(data);
+            });
+        });
+    </script>
+</body>
+
+</html>
